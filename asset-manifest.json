@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shloka-app/static/css/main.4337b0eb.css",
+    "main.js": "/shloka-app/static/js/main.38b4593d.js",
+    "static/js/453.ed3810f9.chunk.js": "/shloka-app/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/shloka-app/index.html",
+    "main.4337b0eb.css.map": "/shloka-app/static/css/main.4337b0eb.css.map",
+    "main.38b4593d.js.map": "/shloka-app/static/js/main.38b4593d.js.map",
+    "453.ed3810f9.chunk.js.map": "/shloka-app/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4337b0eb.css",
+    "static/js/main.38b4593d.js"
+  ]
+}
