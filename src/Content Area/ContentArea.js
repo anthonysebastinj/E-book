@@ -50,13 +50,13 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
   return (
     <div className='container-fluid'>
       <Row>
-        {/* option button on mobile screen row */}
+        {/* Option button on mobile screen row */}
         <Row className='m-auto p-1'>
           <Button style={{ width: '40px', borderRadius: '50%' }} className="d-md-none btn-light" onClick={handleSidebarToggle}>
             ☰
           </Button>
         </Row>
-        {/*taranga heading and mangala shloka container*/}
+        {/* Taranga heading and mangala shloka container */}
         <Row>
           <div className="jumbotron jumbotron-fluid mt-3">
             <div className="container">
@@ -119,16 +119,24 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
                       />
                     </div>
                     <div style={{display:'flex', justifyContent:'space-evenly', fontSize:'18px', textAlign:'justify'}}>
-                        <div style={{padding:'0px',textAlign:'justify'}}>
-                            {selectedShloka[0].map((shloka, index) => (
-                                <p key={index}>{shloka}</p>
-                            ))}
-                        </div>
-                        <div style={{padding:'0px'}}>
-                            {selectedShloka[1].map((shloka, index) => (
-                                <p key={index}>{shloka}</p>
-                            ))}
-                        </div>
+                      <div style={{padding:'0px',textAlign:'justify'}}>
+                        {Array.isArray(selectedShloka[0]) ? (
+                          selectedShloka[0].map((shloka, index) => (
+                            <p key={index}>{shloka}</p>
+                          ))
+                        ) : (
+                          <p>{selectedShloka[0]}</p>
+                        )}
+                      </div>
+                      <div style={{padding:'0px'}}>
+                        {Array.isArray(selectedShloka[1]) ? (
+                          selectedShloka[1].map((shloka, index) => (
+                            <p key={index}>{shloka}</p>
+                          ))
+                        ) : (
+                          <p>{selectedShloka[1]}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <footer className="blockquote-footer text-end p-3">
