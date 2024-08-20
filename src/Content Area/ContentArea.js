@@ -118,7 +118,18 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
                         alt="Taranga" 
                       />
                     </div>
-                    <div style={{display:'flex', justifyContent:'space-between', fontSize:'15px', textAlign:'justify'}}><div style={{padding:'20px'}}>{selectedShloka}[1]</div><div  style={{padding:'20px'}}>{selectedShloka}[2]</div></div>
+                    <div style={{display:'flex', justifyContent:'space-evenly', fontSize:'18px', textAlign:'justify'}}>
+                        <div style={{padding:'0px',textAlign:'justify'}}>
+                            {selectedShloka[0].map((shloka, index) => (
+                                <p key={index}>{shloka}</p>
+                            ))}
+                        </div>
+                        <div style={{padding:'0px'}}>
+                            {selectedShloka[1].map((shloka, index) => (
+                                <p key={index}>{shloka}</p>
+                            ))}
+                        </div>
+                    </div>
                   </div>
                   <footer className="blockquote-footer text-end p-3">
                     {selectedTaranga.authorline}
