@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import './TitleNavbar.css';
+import '../styles/Navbar.css';
 
 function MyVerticallyCenteredModal(props) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,7 +20,7 @@ function MyVerticallyCenteredModal(props) {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     props.onSearch(searchQuery);
-    setSearchQuery(''); // Reset the search input
+    setSearchQuery('');
     props.onHide();
   };
 
@@ -32,17 +32,16 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Body>
-        <Form className="d-flex" onSubmit={handleSearchSubmit}>
+        <Form className="searchPopupMobile" onSubmit={handleSearchSubmit}>
           <FormControl
             type="search"
             placeholder="Search taranga here"
-            className="me-2"
+            className='SearchbarOnModal'
             aria-label="Search"
-            style={{ borderRadius: '20px', width: '100%' }}
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <Button type="submit" variant="outline-danger" style={{ borderRadius: '20px' }}>
+          <Button type="submit" className='SearcBtnOnModal' >
             Search
           </Button>
         </Form>
@@ -62,43 +61,42 @@ function TitleNavbar({ onSearch }) {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     onSearch(searchQuery);
-    setSearchQuery(''); // Reset the search input
+    setSearchQuery('');
   };
 
   return (
     <>
-      <Navbar bg="light" expand="md">
+      <Navbar className='NavbarContainer' expand="md">
         <Container>
-          <Navbar.Brand className='w-50 text-start' href="#home">महाकविश्रीसोमदेवभट्टविरचितः कथासरित्सागरः</Navbar.Brand>
-          <Navbar.Toggle style={{ borderRadius: '35px' }} variant="outline-primary" aria-controls="navbarScroll" onClick={() => setModalShow(true)}>
+          <Navbar.Brand className="NavbarLogo" href="#home">
+            महाकविश्रीसोमदेवभट्टविरचितः कथासरित्सागरः
+          </Navbar.Brand>
+          <Navbar.Toggle 
+            className="searchOptionMobile"
+            aria-controls="navbarScroll" 
+            onClick={() => setModalShow(true)}
+          >
             <FontAwesomeIcon icon={faSearch} />
           </Navbar.Toggle>
-          <Navbar.Collapse id="navbarScroll">
-            <div style={{ width: '100%', borderRadius: '20px' }}>
-              <Form className="d-flex ms-auto d-none d-md-flex" onSubmit={handleSearchSubmit}>
-                <FormControl
-                  type="search"
-                  placeholder="Search taranga here"
-                  className="me-2 outline-danger"
-                  aria-label="Search"
-                  style={{ borderRadius: '20px' }}
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                />
-                <Button style={{ borderRadius: '35px' }} variant="outline-danger" className="no-outline" type="submit">
-                  Search
-                </Button>
-              </Form>
-            </div>
+          <Navbar.Collapse className='NavbarCollapseContainer' id="navbarScroll" >
+            <Form className="searchbarAndBtnDesktop d-none d-md-flex" onSubmit={handleSearchSubmit}>
+              <FormControl
+                type="search"
+                className='searchOptionDesktop'
+                placeholder="Search taranga here"
+                aria-label="Search"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
+              <Button className="SearchbuttonDesktop" type="submit">
+                Search
+              </Button>
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        onSearch={onSearch}
-      />
+      <MyVerticallyCenteredModal show={modalShow}onHide={() => setModalShow(false)}onSearch={onSearch}/>
     </>
   );
 }

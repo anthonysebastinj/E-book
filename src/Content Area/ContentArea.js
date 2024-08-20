@@ -3,7 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Card, NavLink, Offcanvas, Button } from 'react-bootstrap';
-import tarangaData from './taranga.json';
+import tarangaData from '../Json Files/taranga.json';
+import '../styles/ContentArea.css'; // Importing the external CSS file
 
 function ContentAreaComp({ searchQuery, clearSearchQuery }) {
   const [cardData, setCardData] = useState([]);
@@ -20,7 +21,7 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
   const handleItemClick = (index) => {
     navigate(`/taranga/${index}`);
     setShowSidebar(false);
-    clearSearchQuery(); // Clear the search query when an item is clicked
+    clearSearchQuery();
   };
 
   const selectedTaranga = id ? cardData[parseInt(id)] : null;
@@ -43,19 +44,24 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
     }
   }, [searchQuery, cardData, navigate]);
 
+  const lambhakaHeading = tarangaData.page.lambhaka.lambhaka_heading;
+  const mangalaShloka = tarangaData.page.lambhaka.mangala_shloka;
+
   return (
     <div className='container-fluid'>
       <Row>
+        {/* option button on mobile screen row */}
         <Row className='m-auto p-1'>
           <Button style={{ width: '40px', borderRadius: '50%' }} className="d-md-none btn-light" onClick={handleSidebarToggle}>
             ☰
           </Button>
         </Row>
+        {/*taranga heading and mangala shloka container*/}
         <Row>
           <div className="jumbotron jumbotron-fluid mt-3">
             <div className="container">
-              <h1 className="display-6">"कथापीठं नाम प्रथमो लम्बकः"</h1>
-              <p className="lead fs-6">इदं गुरुगिरीन्द्रजाप्रणयमन्दरान्दोलनात् पुरा किल कथामृतं हरमुखाम्बुधेरुद्गतम् । प्रसह्य सरयन्ति ये विगतविघ्नलब्धर्द्वयो धुरं दधति वैवुधीं भुवि भवप्रसादेन ते ॥ १॥</p>
+              <h1 className="display-6">{lambhakaHeading}</h1>
+              <p className="lead fs-6">{mangalaShloka}</p>
             </div>
           </div>
         </Row>
@@ -112,7 +118,7 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
                         alt="Taranga" 
                       />
                     </div>
-                    <p style={{ fontSize: '12px' }}>{selectedShloka.join('\n')}</p>
+                    <div style={{display:'flex', justifyContent:'space-between', fontSize:'15px', textAlign:'justify'}}><div style={{padding:'20px'}}>{selectedShloka}[1]</div><div  style={{padding:'20px'}}>{selectedShloka}[2]</div></div>
                   </div>
                   <footer className="blockquote-footer text-end p-3">
                     {selectedTaranga.authorline}
@@ -123,12 +129,6 @@ function ContentAreaComp({ searchQuery, clearSearchQuery }) {
           ) : (
             <div className='mt-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
               <div style={{ borderRadius: '50%' }}>
-                <img 
-                  style={{ borderRadius: '50%' }} 
-                  className='w-50' 
-                  src='/pngtree-alot-of-books-illustration-png-image_11519708.png' 
-                  alt='Select Chapter' 
-                />
                 <p className='fs-4'>Select a chapter to start reading.</p>
               </div>
             </div>

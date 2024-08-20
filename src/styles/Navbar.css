@@ -1,0 +1,56 @@
+/* Navbar.css */
+.NavbarContainer {
+  background-color: rgba(243, 245, 246, 0.667);
+}
+.searchPopupMobile {
+  display: flex;
+}
+.NavbarLogo {
+  width: 50%;
+  text-align: start;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+}
+
+.searchOptionMobile {
+  border-radius: 35px;
+  background-color: transparent;
+  border: none;
+}
+
+.searchbarAndBtnDesktop {
+  display: flex;
+  margin-left: auto;
+}
+
+.NavbarCollapseContainer{
+  width: 100%;
+  border-radius: 20px;
+  text-align: start;
+}
+
+.searchOptionDesktop  {
+  border-radius: 20px;
+  width: 500px;
+  margin-right: 8px;
+}
+
+.SearchbuttonDesktop {
+  border-radius: 35px;
+  background-color: transparent;
+  color: rgb(46, 46, 254);
+}
+
+.modal .SearchbarOnModal {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.modal .SearcBtnOnModal {
+  border-radius: 20px;
+}
+
+.no-outline:focus {
+  outline: none;
+  box-shadow: none;
+}
